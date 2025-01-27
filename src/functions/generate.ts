@@ -2,11 +2,26 @@ import { PATTERNS } from '../patterns'
 
 const ERR = [['ERROR']]
 
-export function generate(names: string[], length: number) {
+const FORCES: Record<number, number> = {
+	5: 4,
+	7: 4,
+	9: 4,
+	11: 7,
+}
+
+export function generate(names: string[], length: number, isForced = false) {
 	let pattern = PATTERNS[names.length]?.slice()
 
 	if (!pattern) {
 		return ERR
+	}
+
+	if (isForced) {
+		const force = FORCES[names.length]
+
+		if (force) {
+			pattern.push(force)
+		}
 	}
 
 	while (pattern.length < length) {
