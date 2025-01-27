@@ -20,7 +20,7 @@
 :root, body, #root {
   margin: 0;
   height: 100%;
-  touch-action: none;
+  /* touch-action: none; */
 }
 
 body {
