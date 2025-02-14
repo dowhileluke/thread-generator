@@ -1,13 +1,7 @@
+import { FORCES } from '../const'
 import { PATTERNS } from '../patterns'
 
 const ERR = [['ERROR']]
-
-const FORCES: Record<number, number> = {
-	5: 4,
-	7: 4,
-	9: 4,
-	11: 7,
-}
 
 export function generate(names: string[], length: number, isForced = false) {
 	let pattern = PATTERNS[names.length]?.slice()

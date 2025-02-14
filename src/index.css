@@ -18,8 +18,8 @@
 }
 
 :root, body, #root {
-  margin: 0;
-  height: 100%;
+  /* margin: 0; */
+  /* height: 100%; */
   /* touch-action: none; */
 }
 
@@ -33,4 +33,13 @@ body {
     --text: var(--white);
     --body: var(--black);
   }
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 1em;
 }
