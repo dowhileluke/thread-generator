@@ -17,12 +17,6 @@
   --body: var(--white);
 }
 
-:root, body, #root {
-  /* margin: 0; */
-  /* height: 100%; */
-  /* touch-action: none; */
-}
-
 body {
   color: var(--text);
   background-color: var(--body);

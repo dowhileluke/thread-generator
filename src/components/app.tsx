@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { generateArray } from '@dowhileluke/fns'
 import { generate } from '../functions/generate'
 import { Select } from './select'
@@ -6,7 +6,9 @@ import { EXAMPLE_NAMES, FORCES } from '../const'
 import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, Divider, FormControlLabel, IconButton, List, ListItem, TextField } from '@mui/material'
 import { Delete, PersonAdd } from '@mui/icons-material'
 
-const initialNames = generateArray(4, () => String())
+const PERSIST_KEY = 'thread-gen-names'
+const persistedNames = localStorage.getItem(PERSIST_KEY)
+const initialNames: string[] = persistedNames ? JSON.parse(persistedNames) : generateArray(4, () => '')
 const lenOptions = generateArray(4, 52)
 
 function toReplacedNames(names: string[]) {
@@ -22,6 +24,10 @@ export function App() {
 	const [isForced, setIsForced] = useState(false)
 	const threads = useMemo(() => generate(replacedNames, 52, isForced), [replacedNames, isForced])
 	const canForce = Boolean(FORCES[replacedNames.length])
+
+	useEffect(() => {
+		localStorage.setItem(PERSIST_KEY, JSON.stringify(names))
+	}, [names])
 
 	function updateNames(index: number, name: string) {
 		setTempNames(prev => prev.map((prevName, i) => i === index ? name : prevName))
