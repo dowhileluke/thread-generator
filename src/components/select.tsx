@@ -1,4 +1,4 @@
-import { ChangeEvent, useId } from 'react'
+import { useId } from 'react'
 import { FormControl, InputLabel, MenuItem, Select as MuiSelect, SelectChangeEvent } from '@mui/material'
 
 type SelectProps<T> = {
